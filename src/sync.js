@@ -38,6 +38,14 @@ export default function syncHistoryWithStore(history, store, {
   // What does the store say about current location?
   const getLocationInStore = (useInitialIfEmpty) => {
     const locationState = selectLocationState(store.getState())
+    const hasInitialLocationHash = initialLocation && initialLocation.hash;
+    const hasLocationBeforeTransitionsHash = locationState.locationBeforeTransitions && locationState.locationBeforeTransitions.hash;
+    let locationWithHash = locationState.locationBeforeTransitions;
+
+    if(hasInitialLocationHash && !hasLocationBeforeTransitionsHash) {
+      locationWithHash.hash = initialLocation.hash;
+    }
+
     return locationState.locationBeforeTransitions ||
       (useInitialIfEmpty ? initialLocation : undefined)
   }
