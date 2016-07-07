@@ -319,7 +319,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      locationWithHash.hash = initialLocation.hash;
 	    }
 
-	    return locationState.locationBeforeTransitions || (useInitialIfEmpty ? initialLocation : undefined);
+	    return locationWithHash || (useInitialIfEmpty ? initialLocation : undefined);
 	  };
 
 	  // Init currentLocation with potential location in store

@@ -46,7 +46,7 @@ export default function syncHistoryWithStore(history, store, {
       locationWithHash.hash = initialLocation.hash;
     }
 
-    return locationState.locationBeforeTransitions ||
+    return locationWithHash ||
       (useInitialIfEmpty ? initialLocation : undefined)
   }
 
